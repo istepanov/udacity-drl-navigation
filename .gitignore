@@ -2,4 +2,3 @@ Banana_Linux*
 .ipynb_checkpoints/
 __pycache__/
 unity-environment.log
-checkpoint.pth
