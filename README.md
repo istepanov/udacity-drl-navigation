@@ -19,6 +19,8 @@ Four discrete actions are available, corresponding to:
 * `2` - turn left
 * `3` - turn right
 
+The task is episodic, and in order to solve the environment, the agent must get an average score of +13 over 100 consecutive episodes.
+
 ### Prerequisites
 
 * [Miniconda](https://conda.io/miniconda.html)
