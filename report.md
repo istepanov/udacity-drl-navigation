@@ -2,23 +2,32 @@
 
 ### Algorithm
 
-Vanilla Deep Q Learning with fully connected deep neural network.
+This project uses Vanilla Deep Q Learning algorithm with fully connected deep neural network.
+
+Key features:
+
+* Deep Q-Learning algorithm represents the optimal action-value function as **a neural network** (instead of a Q-table).
+* **input:** environment state.
+* **output:** vector of action values for the current state. Max value indicates an action to take.
+* **Experience Replay:** a sequence of experience might be highly correlated. To avoid this, we keep track of a replay buffer (which is a collection of tuples `(state, action, reward, next_state)`) and using experience replay to sample from the buffer at random.
+* **Fixed Q-Targets** - target Q-network weights are updated less often then primary Q-network weights. This helps to avoid harmful correlations:
+
+![Fixed Target](img/fixed_target.png)
 
 DNN Layers:
 
 * **input layer**: 37 nodes (environment state size)
 * **hidden layer**: 64 nodes, ReLU
-* **hidden layer**: 64 nodes, ReLU
 * **output layer**: 4 nodes (number of available actions)
 
 Hyperparameters:
 
-* **replay buffer size**: 10,000
-* **batch size**: 64
-* **learning rate**: 0.0005
-* **discount**: 0.99
-* **epsilon**: start=1.0, end=0.01, decay=0.995
-* **number of episodes**: 2000
+* **replay buffer size**: `10,000` - _max number of experiences to store in the replay buffer._
+* **batch size**: `64` - _how many random experiences to pick from the replay buffer._
+* **learning rate**: `0.0005` - _controls how much we are adjusting the weights of the network._
+* **discount**: `0.99` - _determines the importance of future rewards: `1` - all future rewards are important, `0` - only immediate reward is important._
+* **epsilon**: `start=1.0`, `end=0.01`, `decay=0.995` - _epsilon reflects how random a policy should be: `1` - totally random policy, `0` - greedy policy (always chooses an action with max value)._
+* **number of episodes**: `2000` - _how many episodes to play during training._
 
 ### Training
 
